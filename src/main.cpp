@@ -6,7 +6,7 @@
 
 //the type of sensor we are using
 // define DHTTYPE DHT!!
-#define DHTTYPE DHT22 
+#define DHTTYPE DHT11 
 
 //Instance of DHT takes two arguments
 DHT dht(DHTPIN,DHTTYPE);
@@ -54,6 +54,6 @@ void loop() {
   Serial.print(hic);
   Serial.print(" *C ");
   Serial.print(hif);
-  Serial.print(" *F");
+  Serial.println(" *F");
   
 }
