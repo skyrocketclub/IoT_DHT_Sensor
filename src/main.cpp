@@ -20,6 +20,7 @@ void setup() {
   // put your setup code here, to run once:
 
   Serial.begin(115200);
+  WiFi.begin(ssid,password);
   dht.begin();
 
   //Connecting the board to the wifi
@@ -27,6 +28,7 @@ void setup() {
     delay(500);
     Serial.println("Waiting to connect to WiFi");
   }
+
   Serial.println("");
   Serial.println("WiFi connected ");
   Serial.print("IP address: ");
