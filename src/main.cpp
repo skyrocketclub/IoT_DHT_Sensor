@@ -4,6 +4,11 @@
 //D2 on NodeMCU is GPIO 4
 #define DHTPIN 4 
 
+#include <ESP8266WiFi.h>
+
+const char* ssid = "Incognito";
+const char* password = "biscuits";
+
 //the type of sensor we are using
 // define DHTTYPE DHT!!
 #define DHTTYPE DHT11 
@@ -15,7 +20,19 @@ void setup() {
   // put your setup code here, to run once:
 
   Serial.begin(115200);
+  WiFi.begin(ssid,password);
   dht.begin();
+
+  //Connecting the board to the wifi
+   while(WiFi.status() != WL_CONNECTED){
+    delay(500);
+    Serial.println("Waiting to connect to WiFi");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected ");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP()); 
 }
 
 void loop() {
