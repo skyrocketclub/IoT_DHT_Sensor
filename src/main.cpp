@@ -1,13 +1,20 @@
 // #include <Arduino.h>
 #include "DHT.h"
+#include <ESP8266WiFi.h>
+#include "ThingSpeak.h"
 
 //D2 on NodeMCU is GPIO 4
 #define DHTPIN 4 
 
-#include <ESP8266WiFi.h>
-
 const char* ssid = "Incognito";
 const char* password = "biscuits";
+
+unsigned long myChannelNumber = 1832709;
+const char * myWriteAPIKey = "VQIG4M1SVDOMM9HH";
+const char* server = "api.thingspeak.com";
+
+//Initialize the client library...
+WiFiClient client;
 
 //the type of sensor we are using
 // define DHTTYPE DHT!!
@@ -16,12 +23,22 @@ const char* password = "biscuits";
 //Instance of DHT takes two arguments
 DHT dht(DHTPIN,DHTTYPE);
 
+void updateThingSpeak(float t, float h){
+  ThingSpeak.setField(1,t);
+  ThingSpeak.setField(2,h);
+  ThingSpeak.writeFields(myChannelNumber,myWriteAPIKey);
+  delay(20*1000); //ThingSpeak recommends a delay of 20 seconds
+}
+
 void setup() {
   // put your setup code here, to run once:
 
   Serial.begin(115200);
-  WiFi.begin(ssid,password);
+  delay(1000);
   dht.begin();
+  ThingSpeak.begin(client);
+  WiFi.begin(ssid,password);
+  
 
   //Connecting the board to the wifi
    while(WiFi.status() != WL_CONNECTED){
@@ -72,5 +89,9 @@ void loop() {
   Serial.print(" *C ");
   Serial.print(hif);
   Serial.println(" *F");
+
+  if(client.connect(server,80)){
+    updateThingSpeak(t,h);
+  }
   
 }
