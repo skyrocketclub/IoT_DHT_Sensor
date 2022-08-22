@@ -6,11 +6,11 @@
 //D2 on NodeMCU is GPIO 4
 #define DHTPIN 4 
 
-const char* ssid = "Incognito";
-const char* password = "biscuits";
+const char* ssid = "******";
+const char* password = "******";
 
-unsigned long myChannelNumber = 1832709;
-const char * myWriteAPIKey = "VQIG4M1SVDOMM9HH";
+unsigned long myChannelNumber = ******;
+const char * myWriteAPIKey = "VQIG4M*******";
 const char* server = "api.thingspeak.com";
 
 //Initialize the client library...
