@@ -1,5 +1,12 @@
 # IoT_DHT_Sensor
-This project shows the use of the Node MCU (ESP 8266) with the DHT sensor
+This project shows the use of the Node MCU (ESP 8266) with the DHT sensor. The project has the following features
+
+1. Sends the readings to AWS IoT
+2. Implements EEPROM for Smart WiFi configuration
+3. Uses the AES encryption to write to the broker 
+
+
+
 
 STEPS I TOOK TO GET THE ESP8266 TO START WORKING
 
@@ -9,6 +16,8 @@ STEPS I TOOK TO GET THE ESP8266 TO START WORKING
 4. I went back to the PlatformIO / (or Arduino) and I set the COM port to COM7. (might be different on your system)
 5. Wipe your tears, Redemption has come!
 
+//I changed it from Thingspeak to AWS as Broker
+To get details on how to connect your project to AWS IoT, follow this link: https://how2electronics.com/connecting-esp8266-to-amazon-aws-iot-core-using-mqtt/
 
 STEPS TO CONNECT THE PROJECT TO THE THINKSPEAK SERVER
 1. Install the Thinkspeak library by Mathworks (which should be available if you clone this repo)
