@@ -20,6 +20,8 @@ DHT dht(DHTPIN,DHTTYPE);
 // unsigned long myChannelNumber = 1832709;
 // const char * myWriteAPIKey = "VQIG4M1SVDOMM9HH";
 // const char* server = "api.thingspeak.com";
+
+
 //Initialize the client library...
 // WiFiClient client;
 //the type of sensor we are using
